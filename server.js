@@ -1,7 +1,9 @@
 const express = require( "express" );
+const mongoose = require( "mongoose" );
+const routes = require( "./routes/api" );
+const app = express();
 const path = require( "path" );
 const PORT = process.env.PORT || 3001;
-const app = express();
 
 // Define middleware here
 app.use( express.urlencoded({ extended: true }));
@@ -22,6 +24,6 @@ app.get( "*", ( req, res ) => {
 // Connect to the Mongo DB
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/googlebooks" );
 
-app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+app.listen( PORT, () => {
+  console.log( `🌎 ==> API server now on port ${PORT}!` );
 });
